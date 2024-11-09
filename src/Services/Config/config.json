@@ -1,0 +1,5 @@
+{
+    "baseURL": "https://localhost:44325",
+    "timeout": 180000 
+} 
+ 
