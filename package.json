@@ -44,5 +44,9 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "babel-loader": "^9.2.1"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
