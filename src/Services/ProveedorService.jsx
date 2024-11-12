@@ -25,14 +25,14 @@ export const getAllProveedores = async () => {
 
 
 
-export const insertProveedor = async (Codigo, NombreProveedor,Direccion,Localidad, observaciones,
-    CP,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive) => {
+export const insertProveedor = async (Codigo, nombreProveedor,Direccion,Localidad, observaciones,
+    postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive) => {
   
        
   try {      
       const response = await axiosInstance.post(`/proveedor/create`, {
-        Codigo, NombreProveedor,Direccion,Localidad, observaciones,
-    CP,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive
+        Codigo, nombreProveedor,Direccion,Localidad, observaciones,
+    postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive
       })
       console.log("response")
       console.log(response)
@@ -64,15 +64,19 @@ export const deleteProveedor = async (id) => {
   }
 };
 
-export const updateProveedor = async (Id,Codigo, Nombre,Direccion,Localidad, observaciones,
-    CP,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive) => {
+export const updateProveedor = async (Id,Codigo, nombreProveedor,Direccion,Localidad, observaciones,
+  postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive) => {
   try {
+    console.log(Id,Codigo, nombreProveedor,Direccion,Localidad, observaciones,
+      postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive)
     const response = await axiosInstance.put('/proveedor/update', {
-      Id, Codigo, Nombre,Direccion,Localidad, observaciones,
-      CP,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive
+      Id,Codigo, nombreProveedor,Direccion,Localidad, observaciones,
+  postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive
       })
       if (response.status === 200) {
           alert("El proveedor fue modificado con éxito")
+          console.log("respuesta")
+          console.log(response.data)
           return response.data.data
       }
   }

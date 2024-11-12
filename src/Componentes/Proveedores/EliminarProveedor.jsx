@@ -17,8 +17,7 @@ const EliminarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
     <Container   
     className="modal show"
     style={{ display: 'block', position: 'initial' }}>
-      {console.log("proveedorActual")} 
-      {console.log(proveedorActual)} 
+     
       
     
       <Modal size="sm" show={show} onHide={onCancelar} centered>

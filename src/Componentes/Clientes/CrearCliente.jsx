@@ -115,24 +115,24 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
             <Row>
               
               <Col md={5}>
-                <Form.Group controlId="formIVA">
-                  <Form.Label>IVA</Form.Label>
+                <Form.Group controlId="formiva">
+                  <Form.Label>iva</Form.Label>
                   <Form.Control
                     type="text"
-                    name="IVA"
-                    placeholder="Ingrese el número de IVA"
+                    name="iva"
+                    placeholder="Ingrese el número de iva"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
               </Col>
               <Col md={5}>
-                <Form.Group controlId="formCUIT">
-                  <Form.Label>CUIT</Form.Label>
+                <Form.Group controlId="formcuit">
+                  <Form.Label>cuit</Form.Label>
                   <Form.Control
                     type="text"
-                    name="CUIT"
-                    placeholder="Ingrese el CUIT"
+                    name="cuit"
+                    placeholder="Ingrese el cuit"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
@@ -212,12 +212,12 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group controlId="formCP">
-                  <Form.Label>CP</Form.Label>
+                <Form.Group controlId="formcp">
+                  <Form.Label>cp</Form.Label>
                   <Form.Control
                     type="text"
-                    name="CP"
-                    placeholder="Ingrese el CP"
+                    name="cp"
+                    placeholder="Ingrese el cp"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />

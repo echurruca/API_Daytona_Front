@@ -23,13 +23,25 @@ export const getAllArticulos = async () => {
     throw error;
   }
 };
+export const getArticulo = async (id) => {
+   
+  try {
+    const response = await axiosInstance.get(`/articulo/listbyid/${id}`);
+    
+    return response.data;  // Devuelve el artículo completo
+  } catch (error) {
+    console.error('Error al obtener los artículos:', error);
+    throw error;
+  }
+};
 
 export const insertArticulo = async (id, descripcion,marca,linea,prove,sublinea,medida,
     fechaAct,codProve,costo,std,precio1,precio2,precio3,estimado,margen,desc1,desc2,observaciones,isActive) => {
   
 
   try {
-      
+      console.log("en la función")
+      console.log(codProve)
       const response = await axiosInstance.post(`/articulo/create`, {
         id, descripcion,marca,linea,prove,sublinea,medida,fechaAct,
         codProve,costo,std,precio1,precio2,precio3,estimado,margen,
@@ -64,6 +76,8 @@ export const updateArticulo = async (id, descripcion,marca,linea,prove,sublinea,
     fechaAct,codProve,costo,std,precio1,precio2,precio3,estimado,margen,desc1,desc2,observaciones,isActive) => {
   
   try {
+   
+    
     const response = await axiosInstance.put('/articulo/update', {
         id, descripcion,marca,linea,prove,sublinea,medida,fechaAct,
         codProve,costo,std,precio1,precio2,precio3,estimado,margen,

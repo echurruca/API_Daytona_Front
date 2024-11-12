@@ -52,7 +52,7 @@ const CrearProveedor = ({ onGuardar, onCancelar }) => {
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     type="text"
-                    name="nombre"
+                    name="nombreProveedor"
                     placeholder="Ingrese el nombre"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
@@ -106,7 +106,7 @@ const CrearProveedor = ({ onGuardar, onCancelar }) => {
                   <Form.Label>CP</Form.Label>
                   <Form.Control
                     type="text"
-                    name="cp"
+                    name="postal"
                     placeholder="Ingrese el CP"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
@@ -146,7 +146,7 @@ const CrearProveedor = ({ onGuardar, onCancelar }) => {
                   <Form.Label>Contacto</Form.Label>
                   <Form.Control
                     type="text"
-                    name="IVA"
+                    name="contacto"
                     placeholder="Ingrese el contacto"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}

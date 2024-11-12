@@ -9,12 +9,16 @@ export const axiosInstance = axios.create({
   headers: {
     'Authorization': `Bearer ${BEARER_TOKEN}`,
     'Content-Type': 'application/json',
+    'Accept-Language': 'es-ES', // Cambia el idioma según tus necesidades
+    'Accept-Encoding': 'gzip, deflate, br', // Especifica los métodos de codificación
   },
+  
 });
 
 export const getAllMarcas = async () => {
   try {
     const response = await axiosInstance.get('/marca/listall');
+
     return response.data.marcas;  // Retorna solo el array de marcas
   } catch (error) {
     console.error('Error al obtener las marcas:', error);

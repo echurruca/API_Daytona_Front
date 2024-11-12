@@ -60,7 +60,6 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
                     name="id"
                     placeholder="Id"
                     value={cliente.id}
-                    onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
@@ -121,26 +120,26 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
                 </Form.Group>
               </Col>
               <Col md={3}>
-                <Form.Group controlId="formIVA">
-                  <Form.Label>IVA</Form.Label>
+                <Form.Group controlId="formiva">
+                  <Form.Label>iva</Form.Label>
                   <Form.Control
                     type="text"
                     name="iva"
-                    placeholder="Ingrese el número de IVA"
-                    value={cliente.IVA}
+                    placeholder="Ingrese el número de iva"
+                    value={cliente.iva}
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
               </Col>
               <Col md={4}>
-                <Form.Group controlId="formCUIT">
-                  <Form.Label>CUIT</Form.Label>
+                <Form.Group controlId="formcuit">
+                  <Form.Label>cuit</Form.Label>
                   <Form.Control
                     type="text"
                     name="cuit"
-                    placeholder="Ingrese el CUIT"
-                    value={cliente.CUIT}
+                    placeholder="Ingrese el cuit"
+                    value={cliente.cuit}
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
@@ -148,124 +147,116 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
               </Col>
             </Row>
             <Row>
-            <Col md={4}>
-            <Form.Group controlId="formTelefono">
-              <Form.Label>Teléfono</Form.Label>
-              <Form.Control
-                type="text"
-                name="telefono"
-                placeholder="Ingrese el teléfono"
-                value={cliente.telefono}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-            <Col md={8}>
-            <Form.Group controlId="formObservaciones">
-              <Form.Label>Observación</Form.Label>
-              <Form.Control
-                type="text"
-                name="observaciones"
-                placeholder="Ingrese la observación"
-                value={cliente.observaciones}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
+              <Col md={4}>
+                <Form.Group controlId="formTelefono">
+                  <Form.Label>Teléfono</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="telefono"
+                    placeholder="Ingrese el teléfono"
+                    value={cliente.telefono}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={8}>
+                <Form.Group controlId="formObservaciones">
+                  <Form.Label>Observación</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="observaciones"
+                    placeholder="Ingrese la observación"
+                    value={cliente.observaciones}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
             </Row>
-           
 
-            
-        <Row>
-            <Col md={3}>
-            <Form.Group controlId="formServicio">
-              <Form.Label>Servicio</Form.Label>
-              <Form.Control
-                type="text"
-                name="servicio"
-                placeholder="Ingrese el servicio"
-                value={cliente.servicio}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-            <Col md={3}>
-            <Form.Group controlId="formDias">
-              <Form.Label>Días</Form.Label>
-              <Form.Control
-                type="text"
-                name="dias"
-                placeholder="Ingrese los días"
-                value={cliente.dias}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-            <Col md={6}>
-            <Form.Group controlId="formMail">
-              <Form.Label>Mail</Form.Label>
-              <Form.Control
-                type="text"
-                name="mail"
-                placeholder="Ingrese el mail"
-                value={cliente.mail}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-        </Row>
-        <Row>
-            <Col md={3}>
-            <Form.Group controlId="formDescuento">
-              <Form.Label>Descuento</Form.Label>
-              <Form.Control
-                type="text"
-                name="descuento"
-                placeholder="Ingrese el descuento"
-                value={cliente.descuento}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-            <Col md={3}>
-            <Form.Group controlId="formCP">
-              <Form.Label>CP</Form.Label>
-              <Form.Control
-                type="text"
-                name="cp"
-                placeholder="Ingrese el CP"
-                value={cliente.CP}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-               </Form.Group>
-            </Col>
-            <Col md={6}>
-            <Form.Group controlId="formDirecEnv">
-              <Form.Label>DirecEnv</Form.Label>
-              <Form.Control
-                type="text"
-                name="direcEnv"
-                placeholder="Ingrese la DirecEnv"
-                value={cliente.direcEnv}
-                onChange={handleChange}
-                style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
-              />
-            </Form.Group>
-            </Col>
-           
-        </Row>
-            
-
-           
-
-           
+            <Row>
+              <Col md={3}>
+                <Form.Group controlId="formServicio">
+                  <Form.Label>Servicio</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="servicio"
+                    placeholder="Ingrese el servicio"
+                    value={cliente.servicio}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group controlId="formDias">
+                  <Form.Label>Días</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="dias"
+                    placeholder="Ingrese los días"
+                    value={cliente.dias}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group controlId="formMail">
+                  <Form.Label>Mail</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="mail"
+                    placeholder="Ingrese el mail"
+                    value={cliente.mail}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={3}>
+                <Form.Group controlId="formDescuento">
+                  <Form.Label>Descuento</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="descuento"
+                    placeholder="Ingrese el descuento"
+                    value={cliente.descuento}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={3}>
+                <Form.Group controlId="formcp">
+                  <Form.Label>cp</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="cp"
+                    placeholder="Ingrese el cp"
+                    value={cliente.cp}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group controlId="formDirecEnv">
+                  <Form.Label>DirecEnv</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="direcEnv"
+                    placeholder="Ingrese la DirecEnv"
+                    value={cliente.direcEnv}
+                    onChange={handleChange}
+                    style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
             {/* <Form.Group controlId="formVendedor">
               <Form.Label>Vendedor</Form.Label>
@@ -278,14 +269,6 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
                 style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
               />
             </Form.Group> */}
-
-            
-
-           
-           
-           
-
-            
 
             <Row className="mt-3">
               <Col>

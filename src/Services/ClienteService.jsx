@@ -25,15 +25,15 @@ export const getAllClientes = async () => {
 
 
 
-export const insertCliente = async (Id, Nombre,Direccion,Localidad,Pcia,IVA, CUIT,
-  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,Cp,DirecEnv,Mail,isActive) => {
+export const insertCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
   
 
   try {
       
       const response = await axiosInstance.post(`/Cliente/create`, {
-        Id, Nombre,Direccion,Localidad,Pcia,IVA, CUIT,
-  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,Cp,DirecEnv,Mail,isActive
+        Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
       if (response.status === 200) {
 
@@ -59,12 +59,12 @@ export const deleteCliente = async (id) => {
   }
 };
 
-export const updateCliente = async (Id, Nombre,Direccion,Localidad,Pcia,IVA, CUIT,
-  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,Cp,DirecEnv,Mail,isActive) => {
+export const updateCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+  Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
   try {
     const response = await axiosInstance.put('/Cliente/update', {
-      Id, Nombre,Direccion,Localidad,Pcia,IVA, CUIT,
-      Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,Cp,DirecEnv,Mail,isActive
+      Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+      Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
       if (response.status === 200) {
           alert("El cliente fue modificado con éxito")

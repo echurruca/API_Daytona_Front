@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
 import { Table, TableBody, TableCell, TableContainer,TablePagination, TableHead, TableRow, Paper } from '@mui/material';
-import { BsPencilFill, BsFillTrashFill } from 'react-icons/bs';
+import { BsPencilFill, BsFillTrashFill, BsFillInfoCircleFill } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 import { FaPlus } from 'react-icons/fa';
 
-const TablaArticulo = ({ headers, data, eliminar, editar,agregar }) => {
+const TablaArticulo = ({ headers, data, eliminar, editar,agregar ,info}) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -76,7 +76,7 @@ const TablaArticulo = ({ headers, data, eliminar, editar,agregar }) => {
                 {header}
               </TableCell>
             ))}
-            <TableCell align="center">{'Acciones'}</TableCell>
+            {/* <TableCell align="center">{'Acciones'}</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -87,17 +87,26 @@ const TablaArticulo = ({ headers, data, eliminar, editar,agregar }) => {
                   {cell}
                 </TableCell>
               ))}
-               <TableCell align="center">
+             <TableCell style={{ textAlign:'center' }}>
                 <BsPencilFill 
-                  style={{ color: '#2c286c', fontSize: '20px', marginRight: '20px' }}
+                  style={{ color: '#2c286c', fontSize: '20px'}}
                   onClick={() => editar(row )}
                 />
+                
+              </TableCell>
+              <TableCell style={{ textAlign:'center' }}>
                 <BsFillTrashFill
                   style={{ color: 'red', fontSize: '24px' }}
                   onClick={() => eliminar(row)}
                 />
               </TableCell>
+             <TableCell style={{ textAlign:'center' }}>
               
+              <BsFillInfoCircleFill
+                  style={{ color: 'gray', fontSize: '24px'}}
+                  onClick={() => info(row)}
+                  />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -58,6 +58,7 @@ const Buscador = () => {
 
   return (
     <Fragment>
+      
       <div className="container mt-3 buscador-container">
         <div className="row mb-3 align-items-center">
           <div className="col">

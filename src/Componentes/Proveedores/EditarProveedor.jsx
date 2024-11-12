@@ -9,17 +9,17 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
   const [proveedor, setProveedor] = useState({
     id: proveedorActual[0],
     codigo: proveedorActual[1],
-    nombre: proveedorActual[2],
+    nombreProveedor: proveedorActual[2],
     direccion: proveedorActual[3],
     localidad: proveedorActual[4],
-    observaciones: proveedorActual[5],
-    cp: proveedorActual[6],
-    cuit: proveedorActual[7],
+    pcia: proveedorActual[5],
+    observaciones: proveedorActual[6],
+    postal: proveedorActual[7],
     telefono: proveedorActual[8],
-    contacto: proveedorActual[9],
-    ramo: proveedorActual[10],
-    pcia: proveedorActual[11],
-    fax: proveedorActual[12],
+    fax: proveedorActual[9],
+    cuit: proveedorActual[10],
+    contacto: proveedorActual[11],
+    ramo: proveedorActual[12],
     abreviado: proveedorActual[13],
     mail: proveedorActual[14],
   });
@@ -30,6 +30,8 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
   };
 
   const handleGuardar = () => {
+    console.log("después de guardar")
+    console.log(proveedor)
     onGuardar(proveedor);
     setShow(false);
   };
@@ -60,7 +62,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                     name="codigo"
                     placeholder="código"
                     value={proveedor.id}
-                    onChange={handleChange}
+                    
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
@@ -73,7 +75,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                     name="codigo"
                     placeholder="código"
                     value={proveedor.codigo}
-                    onChange={handleChange}
+                    
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
@@ -83,9 +85,9 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     type="text"
-                    name="nombre"
+                    name="nombreProveedor"
                     placeholder="Ingrese el nombre"
-                    value={proveedor.nombre}
+                    value={proveedor.nombreProveedor}
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
@@ -120,7 +122,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   />
                 </Form.Group>
               </Col>
-              <Col md={9}>
+              <Col md={8}>
                 <Form.Group controlId="formObservaciones">
                   <Form.Label>Observación</Form.Label>
                   <Form.Control
@@ -138,12 +140,12 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
             <Row>
               <Col md={4}>
                 <Form.Group controlId="formCP">
-                  <Form.Label>CP</Form.Label>
+                  <Form.Label>C.P.</Form.Label>
                   <Form.Control
                     type="text"
-                    name="cp"
+                    name="postal"
                     placeholder="Ingrese el CP"
-                    value={proveedor.cp}
+                    value={proveedor.postal}
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
@@ -184,7 +186,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   <Form.Label>Contacto</Form.Label>
                   <Form.Control
                     type="text"
-                    name="IVA"
+                    name="contacto"
                     placeholder="Ingrese el contacto"
                     value={proveedor.contacto}
                     onChange={handleChange}
@@ -192,7 +194,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   />
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
                 <Form.Group controlId="formVendedor">
                   <Form.Label>Ramo</Form.Label>
                   <Form.Control
@@ -205,7 +207,7 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   />
                 </Form.Group>
               </Col>
-              <Col md={3}>
+              <Col md={4}>
                 <Form.Group controlId="formPcia">
                   <Form.Label>Pcia</Form.Label>
                   <Form.Control
@@ -234,10 +236,8 @@ const EditarProveedor = ({ proveedorActual, onGuardar, onCancelar }) => {
                   />
                 </Form.Group>
               </Col>
-            </Row>
-
-            <Row>
-              <Col md={4}>
+           
+              <Col md={3}>
                 <Form.Group controlId="formDescuento">
                   <Form.Label>Abreviado</Form.Label>
                   <Form.Control

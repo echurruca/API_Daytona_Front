@@ -30,8 +30,8 @@ const Cliente = () => {
     fetchClientes();
   }, [callback]);
 
-  const headers = ['Id', 'Nombre','Dirección','Localidad','Provincia','IVA','CUIT','Teléfono',
-    'Observaciones','Servicio','Días','Vendedor','Descuento','CP','DirecEnv','mail']; 
+  const headers = ['Id', 'Nombre','Dirección','localidad','Provincia','iva','cuit','Teléfono',
+    'Observaciones','Servicio','Días','Vendedor','Descuento','cp','DirecEnv','mail', 'Editar', 'Eliminar']; 
     
   const handleEliminar = (cliente) => {
     setClienteSeleccionado(cliente); // Guarda el Cliente seleccionada para eliminar
@@ -55,6 +55,8 @@ const Cliente = () => {
   };
 
   const handleGuardarEditar = async (cliente) => {
+    console.log("en el handle")
+    console.log(cliente)
     setFormEditar(false);     
     await updateCliente(cliente.id, cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
@@ -65,10 +67,9 @@ const Cliente = () => {
   };
 
   const handleGuardarCrear = async (cliente) => {
-
+   
     setFormCargar(false);   
-    console.log("antes de llamar")  
-    console.log(cliente.id)  
+   
     await insertCliente(cliente.id, cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
       , cliente.servicio, cliente.dias, cliente.vendedor, cliente.descuento, cliente.cp 

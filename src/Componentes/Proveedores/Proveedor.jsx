@@ -34,12 +34,14 @@ const Proveedor = () => {
     'Contacto','Ramo','Nombre abreviado','mail']; 
     
   const handleEliminar = (proveedor) => {
+
     setProveedorSeleccionado(proveedor); // Guarda el Proveedor seleccionada para eliminar
     setCargando(false)
     setFormEliminar(true);       // Muestra el modal
   };
 
   const handleEditar = (proveedor) => {
+    
     setProveedorSeleccionado(proveedor);// Guarda el Proveedor seleccionado para eliminar
     setCargando(false)
     setFormEditar(true);       // Muestra el modal
@@ -49,25 +51,27 @@ const Proveedor = () => {
     setFormCargar(true);       // Muestra el modal
   };
   const handleGuardarEliminar = async (proveedor) => {
-    console.log(proveedor)
+   
     setFormEliminar(false); 
     await deleteProveedor(proveedor[0]);
     setCallback(!callback); // Refresca los datos después de eliminar
   };
 
   const handleGuardarEditar = async (proveedor) => {
+   
     setFormEditar(false);     
     await updateProveedor(proveedor.id,proveedor.codigo,proveedor.nombreProveedor,  proveedor.direccion, proveedor.localidad
-      , proveedor.observaciones,  proveedor.cp,  proveedor.cuit, proveedor.telefono, proveedor.contacto,proveedor.ramo, 
+      , proveedor.observaciones,  proveedor.postal,  proveedor.cuit, proveedor.telefono, proveedor.contacto,proveedor.ramo, 
        proveedor.pcia, proveedor.fax, proveedor.abreviado,  proveedor.mail,true);
     setCallback(!callback); // Refresca los datos después de eliminar
     setCargando(true)
   };
 
   const handleGuardarCrear = async (proveedor) => {
+    
     setFormCargar(false);   
-    await insertProveedor(proveedor.codigo,proveedor.nombre,  proveedor.direccion, proveedor.localidad
-      , proveedor.observaciones,  proveedor.cp,  proveedor.cuit, proveedor.telefono, proveedor.contacto,proveedor.ramo, 
+    await insertProveedor(proveedor.codigo,proveedor.nombreProveedor,  proveedor.direccion, proveedor.localidad
+      , proveedor.observaciones,  proveedor.postal,  proveedor.cuit, proveedor.telefono, proveedor.contacto,proveedor.ramo, 
        proveedor.pcia, proveedor.fax, proveedor.abreviado,  proveedor.mail,true);
     setCallback(!callback); // Refresca los datos después de eliminar
     setCargando(true)

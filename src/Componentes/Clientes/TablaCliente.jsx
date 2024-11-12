@@ -46,6 +46,7 @@ const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
   return (
 
     <div style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column' }}>
+    
     <TableContainer component={Paper} style={{ flex: 1, overflow: 'auto' }}>
       <div className="d-flex justify-content-end mb-3" >
       <Button
@@ -75,7 +76,7 @@ const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
                 {header}
               </TableCell>
             ))}
-            <TableCell align="center">{'Acciones'}</TableCell>
+            {/* <TableCell align="center">{'Acciones'}</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -88,15 +89,17 @@ const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
               ))}
                <TableCell align="center">
                 <BsPencilFill 
-                  style={{ color: '#2c286c', fontSize: '20px', marginRight: '20px' }}
+                  style={{ color: '#2c286c', fontSize: '20px' }}
                   onClick={() => editar(row )}
                 />
-                <BsFillTrashFill
+                
+              </TableCell>
+              <TableCell align="center">
+              <BsFillTrashFill
                   style={{ color: 'red', fontSize: '24px' }}
                   onClick={() => eliminar(row)}
                 />
               </TableCell>
-              
             </TableRow>
           ))}
         </TableBody>
