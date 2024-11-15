@@ -16,6 +16,7 @@ import MarcaArticulosMinimos from './ProductosMinimos/MarcaArticulosMinimos';
 import LineaArticulosMinimos from './ProductosMinimos/LineaArticulosMinimos';
 import ArticulosMinimos from './ProductosMinimos/ArticulosMinimos';
 import Cliente from './Clientes/Cliente'
+import ClienteMinimo from './ClientesMinimos/ClienteMinimo';
 import Proveedor from './Proveedores/Proveedor'
 import Buscador from './Buscador/Buscador';
 
@@ -30,6 +31,8 @@ const NavDrawer = () => {
   const [openSubmenuProductosMinimos, setopenSubmenuProductosMinimos] = useState(false);
   //El manejador del menú Clientes
   const [openSubmenuClientes, setopenSubmenuClientes] = useState(false);
+  //El manejador del menú ClientesMinimo
+  const [openSubmenuClientesMinimos, setopenSubmenuClientesMinimos] = useState(false);
   //El manejador del menú Proveedores
   const [openSubmenuProveedores, setopenSubmenuProveedores] = useState(false);
   //El manejador del menú Buscador
@@ -66,6 +69,10 @@ const NavDrawer = () => {
   //Subcategoría de los Clientes
   const subcategoria_Clientes = [
     { name: 'Cliente', path: '/Cliente' },
+  ];
+  //Subcategoría de los ClientesMinimos
+  const subcategoria_Clientes_Minimos = [
+    { name: 'Cliente Minorista', path: '/ClienteMinorista' },
   ];
    //Subcategoría de los Clientes
    const subcategoria_Proveedores = [
@@ -222,6 +229,29 @@ const NavDrawer = () => {
             </List>
           </Collapse>
 
+             {/* Clientes minoristas subcategorías */}
+             <ListItem button onClick={() => setopenSubmenuClientesMinimos(!openSubmenuClientesMinimos)}>
+           
+           <ListItemText primary="Clientes Minoristas " />
+           {openSubmenuClientesMinimos ? <ExpandLess /> : <ExpandMore />}
+         </ListItem>
+         <Collapse in={openSubmenuClientesMinimos} timeout="auto" unmountOnExit>
+           <List component="div" disablePadding>
+             {subcategoria_Clientes_Minimos.map((subcategory, index) => (
+               <ListItem 
+                 button 
+                 key={index} 
+                 component={Link} 
+                 to={subcategory.path} 
+                 sx={{ pl: 4 }}
+                 onClick={() => {setopenSubmenuClientesMinimos(!openSubmenuClientesMinimos),setIsDrawerOpen(false)} } // Cerrar Drawer al hacer clic
+               >
+                 <ListItemText primary={subcategory.name} />
+               </ListItem>
+             ))}
+           </List>
+         </Collapse>
+
            {/* Proveedores subcategorías */}
            <ListItem button onClick={() => setopenSubmenuProveedores(!openSubmenuProveedores)}>
            
@@ -304,6 +334,7 @@ const NavDrawer = () => {
           <Route path="/productos-minimos/linea" element={<LineaArticulosMinimos subcategory="Línea" />} />
           <Route path="/productos-minimos/articulo" element={<ArticulosMinimos subcategory="Artículo" />} />
           <Route path="/Cliente" element={<Cliente subcategory="Cliente" />} />
+          <Route path="/ClienteMinorista" element={<ClienteMinimo subcategory="ClienteMinimo" />} />
           <Route path="/Proveedor" element={<Proveedor subcategory="Proveedor" />} />
           <Route path="/compras/orden/debito" element={<div>Débito</div>} />
           <Route path="/compras/orden/efectivo" element={<div>Efectivo</div>} />

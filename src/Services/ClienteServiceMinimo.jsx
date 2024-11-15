@@ -12,11 +12,12 @@ export const axiosInstance = axios.create({
   },
 });
 
-export const getAllClientes = async () => {
+export const getAllClientesMinimos = async () => {
  
   try {
-    const response = await axiosInstance.get('/cliente/listall');
-    return response.data.clientes;  // Retorna solo el array de clientes
+    const response = await axiosInstance.get('/clienteminorista/listall');
+
+    return response.data.clientesMinoristas;  // Retorna solo el array de clientes
   } catch (error) {
     console.error('Error al obtener los clientes:', error);
     throw error;
@@ -25,13 +26,13 @@ export const getAllClientes = async () => {
 
 
 
-export const insertCliente = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+export const insertClienteMinimo = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
+ 
   
-
   try {
       
-      const response = await axiosInstance.post(`/Cliente/create`, {
+      const response = await axiosInstance.post(`/clienteMinorista/create`, {
         Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
@@ -42,14 +43,14 @@ export const insertCliente = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva,
       }
   }
   catch (e) {
-
+ 
       alert(e.response.data.title)
   }
 }
 
-export const deleteCliente = async (id) => {
+export const deleteClienteMinimo = async (id) => {
   try {
-      const response = await axiosInstance.delete(`/Cliente/delete/${id}`)
+      const response = await axiosInstance.delete(`/clienteMinorista/delete/${id}`)
       if (response.status === 200) {
           alert("El cliente fue eliminado")
           return response.data.data
@@ -60,11 +61,11 @@ export const deleteCliente = async (id) => {
   }
 };
 
-export const updateCliente = async (Id, Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+export const updateClienteMinimo = async (Id,Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
   try {
-    const response = await axiosInstance.put('/Cliente/update', {
-      Id, Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+    const response = await axiosInstance.put('/clienteMinorista/update', {
+      Id, Codigo,Nombre,Direccion,Localidad,Pcia,iva, cuit,
       Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
       if (response.status === 200) {
@@ -73,6 +74,7 @@ export const updateCliente = async (Id, Codigo, Nombre,Direccion,Localidad,Pcia,
       }
   }
   catch (e) {
+      
       alert(e.response.data.title)
   }
 }

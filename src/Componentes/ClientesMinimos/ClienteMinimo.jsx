@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { getAllClientes, deleteCliente, updateCliente, insertCliente} from '../../Services/ClienteService'
-import TablaCliente from './TablaCliente';
-import EliminarCliente from './EliminarCliente';
-import EditarCliente from './EditarCliente';
-import CrearCliente from './CrearCliente';
-//Este es el componente de Línea Artículo de Productos
-const Cliente = () => {
+import { getAllClientesMinimos, deleteClienteMinimo, updateClienteMinimo, insertClienteMinimo} from '../../Services/ClienteServiceMinimo'
+import TablaClienteMinimo from './TablaClienteMinimo';
+import EliminarClienteMinimo from './EliminarClienteMinimo';
+import EditarClienteMinimo from './EditarClienteMinimo';
+import CrearClienteMinimo from './CrearClienteMinimo';
+//Este es el componente de Línea Artículo de ProductosMinimos
+const ClienteMinimo = () => {
   const [cargando, setCargando] = useState(false);
   const [datos, setDatos] = useState([]);
   const [clienteSeleccionado, setClienteSeleccionado] = useState();
@@ -18,12 +18,13 @@ const Cliente = () => {
     const fetchClientes = async () => {
       try {
        
-        const data = await getAllClientes();
+        const data = await getAllClientesMinimos();
         const dato = await data.filter((item) =>item.nombre !== null &&  item.isActive);
         setDatos(dato);
         setCargando(true);
       } catch (error) {
-        console.error('Error al cargar los artículos:', error);
+        setCargando(true);
+        console.error('Error al cargar los clientes:', error);
       }
     };
 
@@ -50,14 +51,15 @@ const Cliente = () => {
   };
   const handleGuardarEliminar = async (cliente) => {
     setFormEliminar(false); 
-    await deleteCliente(cliente[0]);
+    await deleteClienteMinimo(cliente[0]);
     setCallback(!callback); // Refresca los datos después de eliminar
   };
 
   const handleGuardarEditar = async (cliente) => {
+    console.log("el handle")
     console.log(cliente)
     setFormEditar(false);     
-    await updateCliente(cliente.id,cliente.codigo, cliente.nombre, cliente.direccion, cliente.localidad
+    await updateClienteMinimo(cliente.id,cliente.codigo, cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
       , cliente.servicio, cliente.dias, cliente.vendedor, cliente.descuento, cliente.cp 
       , cliente.direcEnv, cliente.mail,true);
@@ -66,10 +68,10 @@ const Cliente = () => {
   };
 
   const handleGuardarCrear = async (cliente) => {
-    
+   
     setFormCargar(false);   
    
-    await insertCliente(cliente.codigo, cliente.nombre, cliente.direccion, cliente.localidad
+    await insertClienteMinimo( cliente.codigo,cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
       , cliente.servicio, cliente.dias, cliente.vendedor, cliente.descuento, cliente.cp 
       , cliente.direcEnv, cliente.mail,true);
@@ -81,27 +83,27 @@ const Cliente = () => {
     <>
       {cargando ? (
         <Fragment>
-          <TablaCliente headers={headers} data={datos} eliminar={handleEliminar} editar={handleEditar} agregar={handleAgregar}/>
+          <TablaClienteMinimo headers={headers} data={datos} eliminar={handleEliminar} editar={handleEditar} agregar={handleAgregar}/>
         </Fragment>
       ) : (
         ""
       )}
       {formEliminar && (
-        <EliminarCliente
+        <EliminarClienteMinimo
           clienteActual={clienteSeleccionado}
           onGuardar={handleGuardarEliminar}
           onCancelar={() => {setFormEliminar(false),setCargando(true)}}
         />
       )}
       {formEditar && (
-        <EditarCliente
+        <EditarClienteMinimo
           clienteActual={clienteSeleccionado}
           onGuardar={handleGuardarEditar}
           onCancelar={() => {setFormEditar(false),setCargando(true)}}
         />
       )}
       {formCargar && (
-        <CrearCliente
+        <CrearClienteMinimo
           onGuardar={handleGuardarCrear}
           onCancelar={() => {setFormCargar(false),setCargando(true)}}
         />
@@ -110,4 +112,4 @@ const Cliente = () => {
   );
 };
 
-export default Cliente;
+export default ClienteMinimo;

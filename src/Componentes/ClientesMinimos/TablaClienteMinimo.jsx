@@ -4,7 +4,7 @@ import { BsPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 import { FaPlus } from 'react-icons/fa';
 
-const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
+const TablaClienteMinimo = ({ headers, data, eliminar, editar,agregar }) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -124,6 +124,6 @@ const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
   );
 };
 
-export default TablaCliente;
+export default TablaClienteMinimo;
 
 

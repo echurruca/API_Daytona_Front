@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Form, Button, Row, Col, Container } from "react-bootstrap";
 import { FaSave, FaTimes } from "react-icons/fa";
 
-const CrearCliente = ({ onGuardar, onCancelar }) => {
+const CrearClienteMinimo = ({ onGuardar, onCancelar }) => {
   const [show, setShow] = useState(true);
 
   // Verificación de Cliente Actual para asegurarse de que id y nombre se asignen correctamente
@@ -41,12 +41,13 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
                   <Form.Control
                     type="text"
                     name="codigo"
-                    placeholder="ingrese el código"
+                    placeholder="Ingrese el código"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
               </Col>
+              
               <Col md={5}>
                 <Form.Group controlId="formId">
                   <Form.Label>Nombre</Form.Label>
@@ -91,7 +92,7 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
                   <Form.Label>Localidad</Form.Label>
                   <Form.Control
                     type="text"
-                    name="Localidad"
+                    name="localidad"
                     placeholder="Ingrese la localidad"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
@@ -278,4 +279,4 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
   );
 };
 
-export default CrearCliente;
+export default CrearClienteMinimo;
