@@ -30,7 +30,7 @@ export const getArticulo = async (id) => {
     
     return response.data;  // Devuelve el artículo completo
   } catch (error) {
-    console.error('Error al obtener los artículos:', error);
+    console.error('Error al obtener el artículo:', error);
     throw error;
   }
 };
@@ -40,8 +40,7 @@ export const insertArticulo = async (id, descripcion,marca,linea,prove,sublinea,
   
 
   try {
-      console.log("en la función")
-      console.log(codProve)
+      
       const response = await axiosInstance.post(`/articulo/create`, {
         id, descripcion,marca,linea,prove,sublinea,medida,fechaAct,
         codProve,costo,std,precio1,precio2,precio3,estimado,margen,
@@ -55,7 +54,7 @@ export const insertArticulo = async (id, descripcion,marca,linea,prove,sublinea,
   }
   catch (e) {
 
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }
 
@@ -68,7 +67,7 @@ export const deleteArticulo = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
@@ -89,6 +88,6 @@ export const updateArticulo = async (id, descripcion,marca,linea,prove,sublinea,
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }

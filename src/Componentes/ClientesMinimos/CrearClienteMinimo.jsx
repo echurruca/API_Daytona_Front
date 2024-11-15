@@ -37,7 +37,7 @@ const CrearClienteMinimo = ({ onGuardar, onCancelar }) => {
             <Row>
               <Col md={2}>
                 <Form.Group controlId="formId">
-                  <Form.Label>Codigo</Form.Label>
+                  <Form.Label>Código</Form.Label>
                   <Form.Control
                     type="text"
                     name="codigo"
@@ -92,7 +92,7 @@ const CrearClienteMinimo = ({ onGuardar, onCancelar }) => {
                   <Form.Label>Localidad</Form.Label>
                   <Form.Control
                     type="text"
-                    name="Localidad"
+                    name="localidad"
                     placeholder="Ingrese la localidad"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}

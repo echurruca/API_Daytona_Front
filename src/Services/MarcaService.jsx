@@ -39,7 +39,7 @@ export const insertMarca = async (nombre, isActive) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }
 
@@ -52,7 +52,7 @@ export const deleteMarca = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
@@ -68,6 +68,6 @@ export const updateMarca = async (ID, nombre,isActive) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }

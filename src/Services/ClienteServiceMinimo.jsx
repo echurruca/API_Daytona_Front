@@ -28,8 +28,8 @@ export const getAllClientesMinimos = async () => {
 
 export const insertClienteMinimo = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
+ 
   
-   console.log("llega a la función")
   try {
       
       const response = await axiosInstance.post(`/clienteMinorista/create`, {
@@ -43,7 +43,8 @@ export const insertClienteMinimo = async (Codigo, Nombre,Direccion,Localidad,Pci
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+ 
+      alert(e.response.data.title)
   }
 }
 
@@ -56,7 +57,7 @@ export const deleteClienteMinimo = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
@@ -73,6 +74,7 @@ export const updateClienteMinimo = async (Id,Codigo, Nombre,Direccion,Localidad,
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      
+      alert(e.response.data.title)
   }
 }

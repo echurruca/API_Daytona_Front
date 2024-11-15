@@ -25,14 +25,14 @@ export const getAllClientes = async () => {
 
 
 
-export const insertCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+export const insertCliente = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
   
 
   try {
       
       const response = await axiosInstance.post(`/Cliente/create`, {
-        Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+        Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
       if (response.status === 200) {
@@ -42,7 +42,8 @@ export const insertCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cui
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+
+      alert(e.response.data.title)
   }
 }
 
@@ -55,15 +56,15 @@ export const deleteCliente = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
-export const updateCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+export const updateCliente = async (Id, Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
   Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive) => {
   try {
     const response = await axiosInstance.put('/Cliente/update', {
-      Id, Nombre,Direccion,Localidad,Pcia,iva, cuit,
+      Id, Codigo, Nombre,Direccion,Localidad,Pcia,iva, cuit,
       Telefono, observaciones, Servicio, Dias,Vendedor,Descuento,cp,DirecEnv,Mail,isActive
       })
       if (response.status === 200) {
@@ -72,6 +73,6 @@ export const updateCliente = async (Id, Nombre,Direccion,Localidad,Pcia,iva, cui
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }

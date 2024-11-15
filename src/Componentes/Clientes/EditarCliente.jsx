@@ -8,21 +8,22 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
   // Verificación de cliente actual para asegurarse de que codigo y descripcion se asignen correctamente
   const [cliente, setCliente] = useState({
     id: clienteActual[0],
-    nombre: clienteActual[1],
-    direccion: clienteActual[2],
-    localidad: clienteActual[3],
-    pcia: clienteActual[4],
-    iva: clienteActual[5],
-    cuit: clienteActual[6],
-    telefono: clienteActual[7],
-    observaciones: clienteActual[8],
-    servicio: clienteActual[9],
-    dias: clienteActual[10],
-    vendedor: clienteActual[11],
-    descuento: clienteActual[12],
-    cp: clienteActual[13],
-    direcEnv: clienteActual[14],
-    mail: clienteActual[15],
+    codigo: clienteActual[1],
+    nombre: clienteActual[2],
+    direccion: clienteActual[3],
+    localidad: clienteActual[4],
+    pcia: clienteActual[5],
+    iva: clienteActual[6],
+    cuit: clienteActual[7],
+    telefono: clienteActual[8],
+    observaciones: clienteActual[9],
+    servicio: clienteActual[10],
+    dias: clienteActual[11],
+    vendedor: clienteActual[12],
+    descuento: clienteActual[13],
+    cp: clienteActual[14],
+    direcEnv: clienteActual[15],
+    mail: clienteActual[16],
   });
 
   // Función para manejar cambios en el formulario
@@ -54,12 +55,12 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
             <Row>
               <Col md={2}>
                 <Form.Group controlId="formId">
-                  <Form.Label>Id</Form.Label>
+                  <Form.Label>Código</Form.Label>
                   <Form.Control
                     type="text"
-                    name="id"
+                    name="Código"
                     placeholder="Id"
-                    value={cliente.id}
+                    value={cliente.codigo}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
@@ -99,7 +100,7 @@ const EditarCliente = ({ clienteActual, onGuardar, onCancelar }) => {
                   <Form.Control
                     type="text"
                     name="localidad"
-                    placeholder="Ingrese el Id de la localidad"
+                    placeholder="Ingrese  la localidad"
                     value={cliente.localidad}
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}

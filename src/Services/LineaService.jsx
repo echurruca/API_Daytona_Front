@@ -38,7 +38,7 @@ export const insertLinea = async (id, nombre, isActive) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }
 
@@ -51,7 +51,7 @@ export const deleteLinea = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
@@ -67,6 +67,6 @@ export const updateLinea = async (ID, nombre,isActive) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }

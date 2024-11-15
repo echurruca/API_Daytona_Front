@@ -37,11 +37,11 @@ const CrearCliente = ({ onGuardar, onCancelar }) => {
             <Row>
               <Col md={2}>
                 <Form.Group controlId="formId">
-                  <Form.Label>Id</Form.Label>
+                  <Form.Label>Código</Form.Label>
                   <Form.Control
                     type="text"
-                    name="id"
-                    placeholder="Id"
+                    name="codigo"
+                    placeholder="ingrese el código"
                     onChange={handleChange}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />

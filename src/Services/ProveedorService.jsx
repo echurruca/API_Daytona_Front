@@ -34,8 +34,7 @@ export const insertProveedor = async (Codigo, nombreProveedor,Direccion,Localida
         Codigo, nombreProveedor,Direccion,Localidad, observaciones,
     postal,Cuit,Telefono,Contacto,Ramo,Pcia,Fax,abreviado,Mail,isActive
       })
-      console.log("response")
-      console.log(response)
+      
       if (response.status === 200) {
 
           alert("El proveedor se creó con éxito")
@@ -47,7 +46,7 @@ export const insertProveedor = async (Codigo, nombreProveedor,Direccion,Localida
     }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }
 
@@ -60,7 +59,7 @@ export const deleteProveedor = async (id) => {
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 };
 
@@ -75,12 +74,10 @@ export const updateProveedor = async (Id,Codigo, nombreProveedor,Direccion,Local
       })
       if (response.status === 200) {
           alert("El proveedor fue modificado con éxito")
-          console.log("respuesta")
-          console.log(response.data)
           return response.data.data
       }
   }
   catch (e) {
-      alert(e.response.data.message)
+      alert(e.response.data.title)
   }
 }

@@ -23,6 +23,7 @@ const ClienteMinimo = () => {
         setDatos(dato);
         setCargando(true);
       } catch (error) {
+        setCargando(true);
         console.error('Error al cargar los clientes:', error);
       }
     };
@@ -30,7 +31,7 @@ const ClienteMinimo = () => {
     fetchClientes();
   }, [callback]);
 
-  const headers = ['Id','Codigo', 'Nombre','Dirección','localidad','Provincia','iva','cuit','Teléfono',
+  const headers = ['Id','Código', 'Nombre','Dirección','localidad','Provincia','iva','cuit','Teléfono',
     'Observaciones','Servicio','Días','Vendedor','Descuento','cp','DirecEnv','mail', 'Editar', 'Eliminar']; 
     
   const handleEliminar = (cliente) => {
@@ -55,6 +56,8 @@ const ClienteMinimo = () => {
   };
 
   const handleGuardarEditar = async (cliente) => {
+    console.log("el handle")
+    console.log(cliente)
     setFormEditar(false);     
     await updateClienteMinimo(cliente.id,cliente.codigo, cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
@@ -68,7 +71,7 @@ const ClienteMinimo = () => {
    
     setFormCargar(false);   
    
-    await insertClienteMinimo(cliente.id, cliente.codigo,cliente.nombre, cliente.direccion, cliente.localidad
+    await insertClienteMinimo( cliente.codigo,cliente.nombre, cliente.direccion, cliente.localidad
       , cliente.pcia, cliente.iva, cliente.cuit, cliente.telefono, cliente.observaciones
       , cliente.servicio, cliente.dias, cliente.vendedor, cliente.descuento, cliente.cp 
       , cliente.direcEnv, cliente.mail,true);

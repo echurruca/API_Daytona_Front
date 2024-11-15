@@ -11,6 +11,7 @@ const TablaCliente = ({ headers, data, eliminar, editar,agregar }) => {
   
   const datos = data.map((item) => [
   item.id,
+  item.codigo,
   item?.nombre||null,
   item?.direccion || null,
   item?.localidad ||null,

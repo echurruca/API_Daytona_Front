@@ -8,7 +8,7 @@ const EditarClienteMinimo = ({ clienteActual, onGuardar, onCancelar }) => {
   // Verificación de cliente actual para asegurarse de que codigo y descripcion se asignen correctamente
   const [cliente, setCliente] = useState({
     id: clienteActual[0],
-    id: clienteActual[1],
+    codigo: clienteActual[1],
     nombre: clienteActual[2],
     direccion: clienteActual[3],
     localidad: clienteActual[4],
@@ -60,7 +60,7 @@ const EditarClienteMinimo = ({ clienteActual, onGuardar, onCancelar }) => {
                     type="text"
                     name="codigo"
                     placeholder="Código"
-                    value={cliente.id}
+                    value={cliente.codigo}
                     style={{ borderRadius: "15px", backgroundColor: "#f1f1f1" }}
                   />
                 </Form.Group>
