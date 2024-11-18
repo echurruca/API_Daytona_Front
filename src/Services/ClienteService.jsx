@@ -42,7 +42,7 @@ export const insertCliente = async (Codigo, Nombre,Direccion,Localidad,Pcia,iva,
       }
   }
   catch (e) {
-
+      
       alert(e.response.data.title)
   }
 }

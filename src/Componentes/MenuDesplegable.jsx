@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, 
-  IconButton, Collapse, Button 
+  IconButton, Collapse,  Menu, MenuItem, Avatar
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLess from '@mui/icons-material/ExpandLess';
@@ -20,11 +20,15 @@ import ClienteMinimo from './ClientesMinimos/ClienteMinimo';
 import Proveedor from './Proveedores/Proveedor'
 import Buscador from './Buscador/Buscador';
 
-const NavDrawer = () => {
+const NavDrawer = ({onCerrar}) => {
   //Declaración de los estados de los componentes
   //El manejador del menú desplegable
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openMenu = Boolean(anchorEl);
+
+  const userName = localStorage.getItem('username') || 'Usuario';
+
   //El manejador del menú Productos
   const [openSubmenuProductos, setopenSubmenuProductos] = useState(false);
   //El manejador del menú Productos Mínimos
@@ -112,7 +116,23 @@ const NavDrawer = () => {
     setIsDrawerOpen(open);
   };
 
- 
+  const handleAvatarClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    
+  };
+
+  const handleMenuClose = () => {
+      setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+   
+    
+    localStorage.clear();
+    handleMenuClose();
+    onCerrar();
+    
+  };
   return (
     <Router>
       {/* AppBar con el botón para abrir el menú */}
@@ -129,6 +149,22 @@ const NavDrawer = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }} >
             Menú
           </Typography>
+          {/* Avatar y menú desplegable */}
+          <IconButton onClick={handleAvatarClick}>
+            <Avatar >
+              {userName[0].toUpperCase() }
+            </Avatar>
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            open={openMenu}
+            onClose={handleMenuClose}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+          >
+           
+            <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
 
@@ -319,9 +355,10 @@ const NavDrawer = () => {
               </Collapse>
             </List>
           </Collapse>
-
+              
         </List>
       </Drawer>
+
 
       {/* Contenido principal donde se cargan los componentes según la ruta */}
       <main style={{ padding: '20px' }}>
@@ -341,6 +378,7 @@ const NavDrawer = () => {
           <Route path="/compras/proveedor/ramo" element={<div>Ramo</div>} />
         </Routes>
       </main>
+     
     </Router>
   );
 };

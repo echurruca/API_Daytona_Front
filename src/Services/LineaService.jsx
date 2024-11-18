@@ -38,6 +38,7 @@ export const insertLinea = async (id, nombre, isActive) => {
       }
   }
   catch (e) {
+    console.log(e)
       alert(e.response.data.title)
   }
 }
