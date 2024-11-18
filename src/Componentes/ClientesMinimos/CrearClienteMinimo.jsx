@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Form, Button, Row, Col, Container } from "react-bootstrap";
+import { Modal, Form, Button, Row, Col, Container} from "react-bootstrap";
 import { FaSave, FaTimes } from "react-icons/fa";
 
 const CrearClienteMinimo = ({ onGuardar, onCancelar }) => {

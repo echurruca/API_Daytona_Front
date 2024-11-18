@@ -28,6 +28,7 @@ const NavDrawer = ({onCerrar}) => {
   const openMenu = Boolean(anchorEl);
 
   const userName = localStorage.getItem('username') || 'Usuario';
+  const idRol = localStorage.getItem('idRol');
 
   //El manejador del menú Productos
   const [openSubmenuProductos, setopenSubmenuProductos] = useState(false);
@@ -198,7 +199,10 @@ const NavDrawer = ({onCerrar}) => {
              ))}
            </List>
          </Collapse>
+         {idRol === '2' && (
+        <>
           {/* Productos con subcategorías */}
+          
           <ListItem button onClick={()=>setopenSubmenuProductos(!openSubmenuProductos)}>
             <ListItemText primary="Productos" />
             {openSubmenuProductos ? <ExpandLess /> : <ExpandMore />}
@@ -219,6 +223,7 @@ const NavDrawer = ({onCerrar}) => {
               ))}
             </List>
           </Collapse>
+        </>)}
 
           {/* Productos Mínimos con subcategorías */}
           <ListItem button onClick={() => setopenSubmenuProductosMinimos(!openSubmenuProductosMinimos)}>
@@ -242,6 +247,8 @@ const NavDrawer = ({onCerrar}) => {
             </List>
           </Collapse>
 
+          {idRol === '2' && (
+        <>
            {/* Clientes subcategorías */}
            <ListItem button onClick={() => setopenSubmenuClientes(!openSubmenuClientes)}>
            
@@ -264,6 +271,7 @@ const NavDrawer = ({onCerrar}) => {
               ))}
             </List>
           </Collapse>
+          </>)}
 
              {/* Clientes minoristas subcategorías */}
              <ListItem button onClick={() => setopenSubmenuClientesMinimos(!openSubmenuClientesMinimos)}>
@@ -288,6 +296,8 @@ const NavDrawer = ({onCerrar}) => {
            </List>
          </Collapse>
 
+         {idRol === '2' && (
+        <>
            {/* Proveedores subcategorías */}
            <ListItem button onClick={() => setopenSubmenuProveedores(!openSubmenuProveedores)}>
            
@@ -310,7 +320,10 @@ const NavDrawer = ({onCerrar}) => {
               ))}
             </List>
           </Collapse>
+          </>)}
 
+          {idRol === '2' && (
+        <>
             {/* Compras */}
             <ListItem button onClick={() => setOpenSubmenuCompras(!openSubmenuCompras)}>
             <ListItemText primary="Compras" />
@@ -355,7 +368,7 @@ const NavDrawer = ({onCerrar}) => {
               </Collapse>
             </List>
           </Collapse>
-              
+              </>)}
         </List>
       </Drawer>
 

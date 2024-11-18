@@ -52,7 +52,7 @@ const Login = ({ onLogin }) => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Iniciar Sesión
+          Accesorios Daytona
         </Typography>
         <Box
           component="form"
