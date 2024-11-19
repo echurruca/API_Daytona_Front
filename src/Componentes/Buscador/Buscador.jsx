@@ -144,7 +144,7 @@
 
 // export default Buscador;
 
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getAllArticulos } from '../../Services/ArticuloService';
 import './Buscador.css'; // Archivo CSS personalizado
