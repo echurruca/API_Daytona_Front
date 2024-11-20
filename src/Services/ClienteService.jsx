@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
-const BEARER_TOKEN = process.env.REACT_APP_TOKEN
+const BEARER_TOKEN = localStorage.getItem('token')
 
 
 export const axiosInstance = axios.create({
@@ -13,7 +13,7 @@ export const axiosInstance = axios.create({
 });
 
 export const getAllClientes = async () => {
- 
+ console.log("llega a llamar")
   try {
     const response = await axiosInstance.get('/cliente/listall');
     return response.data.clientes;  // Retorna solo el array de clientes
