@@ -211,7 +211,6 @@ const Buscador = () => {
   };
 
   const info = async (row) => {
-    console.log(row)
     setArticuloCompleto(await getArticulo(row.id))
     setCargando(false)
     setFormInformacion(true); 
