@@ -29,10 +29,14 @@ const Login = ({ onLogin }) => {
       setError("Por favor complete todos los campos.");
       return;
     }
-    setError("");
+    setError("");   
+    onLogin(formData); 
+  };
 
-    // Simular llamada al backend o ejecutar función onLogin
-    onLogin(formData); // Pasa los datos al padre o realiza una acción
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit(event);
+    }
   };
 
   return (
@@ -95,6 +99,7 @@ const Login = ({ onLogin }) => {
             variant="contained"
             color="primary"
             sx={{ mt: 3, mb: 2 }}
+            onKeyUp={handleKeyPress}
           >
             Iniciar Sesión
           </Button>

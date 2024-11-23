@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fragment, useState } from 'react';
+import {  useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MenuDesplegable from './Componentes/MenuDesplegable'
 import { login } from './Services/LoginService';
@@ -22,7 +22,7 @@ const App = () => {
   
   };
   return (
-    <Fragment>
+    <>
     
      {!isAuthenticated ? (
         <Login onLogin={handleLogin} />
@@ -33,7 +33,7 @@ const App = () => {
         />
       )}
 
-    </Fragment>
+    </>
    
   );
 };
