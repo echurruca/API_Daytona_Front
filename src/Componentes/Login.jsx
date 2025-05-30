@@ -24,20 +24,18 @@ const Login = ({ onLogin }) => {
   };
 
   const handleSubmit = (e) => {
+   
     e.preventDefault();
     if (!formData.username || !formData.password) {
       setError("Por favor complete todos los campos.");
       return;
     }
-    setError("");   
+    setError("");  
+
     onLogin(formData); 
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleSubmit(event);
-    }
-  };
+ 
 
   return (
     <Container component="main" maxWidth="xs">
@@ -99,7 +97,6 @@ const Login = ({ onLogin }) => {
             variant="contained"
             color="primary"
             sx={{ mt: 3, mb: 2 }}
-            onKeyUp={handleKeyPress}
           >
             Iniciar Sesión
           </Button>

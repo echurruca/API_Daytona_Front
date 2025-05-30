@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { 
   AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, 
-  IconButton, Collapse,  Menu, MenuItem, Avatar
+  IconButton, Collapse,  Menu, MenuItem, Avatar, Box
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Importar los componentes específicos
 import MarcaArticulo from './Productos/Marca/MarcaArticulo';
 import LineaArticulo from './Productos/Linea/LineaArticulo';
 import Articulo from './Productos/Articulo/Articulo';
-import MarcaArticulosMinimos from './ProductosMinimos/MarcaArticulosMinimos';
-import LineaArticulosMinimos from './ProductosMinimos/LineaArticulosMinimos';
-import ArticulosMinimos from './ProductosMinimos/ArticulosMinimos';
+import MarcaArticulosMinimos from './Listados/MarcaArticulosMinimos';
+import LineaArticulosMinimos from './Listados/LineaArticulosMinimos';
+import PorProveedorYMarca from './Listados/PorProveedorYMarca';
 import Cliente from './Clientes/Cliente'
 import ClienteMinimo from './ClientesMinimos/ClienteMinimo';
 import Proveedor from './Proveedores/Proveedor'
 import Buscador from './Buscador/Buscador';
+import logo from '../Imagenes/logo.jpg';
 
-const NavDrawer = ({onCerrar}) => {
+const NavDrawer = ({onCerrar,articulos}) => {
   //Declaración de los estados de los componentes
   //El manejador del menú desplegable
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -68,7 +70,7 @@ const NavDrawer = ({onCerrar}) => {
   const subcategoria_ProductosMinimos = [
     { name: 'Marca', path: '/productos-minimos/marca' },
     { name: 'Línea', path: '/productos-minimos/linea' },
-    { name: 'Artículo', path: '/productos-minimos/articulo' },
+    { name: 'PorProveedorYMarca', path: '/Listados/PorProveedorYMarca' },
   ];
   
   //Subcategoría de los Clientes
@@ -108,6 +110,7 @@ const NavDrawer = ({onCerrar}) => {
     { name: 'Ramo', path: '/compras/proveedor/ramo' },
   ];
 
+  const navigate = useNavigate();
 
   //Función de orden suerior que espera el evento para abrir el menú
   const toggleDrawer = (open) => (event) => {
@@ -135,26 +138,49 @@ const NavDrawer = ({onCerrar}) => {
     
   };
   return (
-    <Router>
-      {/* AppBar con el botón para abrir el menú */}
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton 
-            edge="start" 
-            color="inherit" 
-            aria-label="menu" 
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }} >
-            Menú
-          </Typography>
-          {/* Avatar y menú desplegable */}
-          <IconButton onClick={handleAvatarClick}>
-            <Avatar >
-              {userName[0].toUpperCase() }
-            </Avatar>
+    <>
+     <AppBar position="static" sx={{ backgroundColor: '#a11ff1' }}>
+      <Toolbar sx={{ position: 'relative', minHeight: { xs: 56, sm: 64 } }}>
+        
+        {/* Botón menú izquierda */}
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={toggleDrawer(true)}
+          sx={{ zIndex: 1 }} // Asegura que esté encima si se solapan
+        >
+          <MenuIcon />Menú
+        </IconButton>
+
+        {/* Logo centrado y responsivo */}
+        <Box
+          sx={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            component="img"
+            src={logo}
+            alt="Accesorios Daytona"
+            sx={{
+              height: { xs: 36, sm: 44, md: 52 }, 
+              maxHeight: '100%',
+              objectFit: 'contain',
+            }}
+          />
+        </Box>
+
+        {/* Avatar derecha */}
+        <Box sx={{ marginLeft: 'auto', zIndex: 1 }}>
+          <IconButton onClick={handleAvatarClick} color="inherit">
+            <Avatar sx={{ bgcolor: 'black', color: 'white' }}>{userName[0].toUpperCase()}</Avatar>
           </IconButton>
           <Menu
             anchorEl={anchorEl}
@@ -163,11 +189,15 @@ const NavDrawer = ({onCerrar}) => {
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           >
-           
             <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
           </Menu>
-        </Toolbar>
-      </AppBar>
+        </Box>
+
+      </Toolbar>
+    </AppBar>
+
+
+ 
 
       {/* Drawer temporal que se puede abrir/cerrar */}
       <Drawer
@@ -227,7 +257,7 @@ const NavDrawer = ({onCerrar}) => {
 
           {/* Productos Mínimos con subcategorías */}
           <ListItem button onClick={() => setopenSubmenuProductosMinimos(!openSubmenuProductosMinimos)}>
-            <ListItemText primary="Productos Mínimos" />
+            <ListItemText primary="Listados" />
             {openSubmenuProductosMinimos ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openSubmenuProductosMinimos} timeout="auto" unmountOnExit>
@@ -376,24 +406,26 @@ const NavDrawer = ({onCerrar}) => {
       {/* Contenido principal donde se cargan los componentes según la ruta */}
       <main style={{ padding: '20px' }}>
         <Routes>
-          <Route path="/Buscador" element={<Buscador />} />
+          <Route path="/Buscador" element={<Buscador articulos={articulos} />} />
           <Route path="/marca-articulo" element={<MarcaArticulo />} />
           <Route path="/linea-articulo" element={<LineaArticulo />} />
           <Route path="/articulo" element={<Articulo />} />
           <Route path="/productos-minimos/marca" element={<MarcaArticulosMinimos subcategory="Marca" />} />
           <Route path="/productos-minimos/linea" element={<LineaArticulosMinimos subcategory="Línea" />} />
-          <Route path="/productos-minimos/articulo" element={<ArticulosMinimos subcategory="Artículo" />} />
+          <Route path="/Listados/PorProveedorYMarca" element={<PorProveedorYMarca articulos={articulos} subcategory="PorProveedorYMarca" />} />
           <Route path="/Cliente" element={<Cliente subcategory="Cliente" />} />
           <Route path="/ClienteMinorista" element={<ClienteMinimo subcategory="ClienteMinimo" />} />
           <Route path="/Proveedor" element={<Proveedor subcategory="Proveedor" />} />
           <Route path="/compras/orden/debito" element={<div>Débito</div>} />
           <Route path="/compras/orden/efectivo" element={<div>Efectivo</div>} />
           <Route path="/compras/proveedor/ramo" element={<div>Ramo</div>} />
+          
         </Routes>
       </main>
      
-    </Router>
+    </>
   );
 };
 
 export default NavDrawer;
+

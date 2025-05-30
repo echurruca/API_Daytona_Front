@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "11.13.3",
-    "@emotion/styled": "11.13.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "6.1.7",
-    "@mui/material": "6.1.8",
+    "@mui/material": "^6.1.8",
     "axios": "1.7.7",
     "bootstrap": "5.3.3",
+    "file-saver": "^2.0.5",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
     "react": "18.2.0",
     "react-bootstrap": "2.10.5",
     "react-dom": "18.2.0",
@@ -16,10 +19,11 @@
     "react-router-dom": "6.28.0",
     "react-scripts": "5.0.1",
     "serve": "14.2.4",
-    "web-vitals": "4.2.4"
+    "web-vitals": "4.2.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,5 +43,8 @@
   "engines": {
     "node": "22.x",
     "npm": "10.x"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

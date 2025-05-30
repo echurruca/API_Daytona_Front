@@ -1,7 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer,TablePagination, TableHead, TableRow, Paper } from '@mui/material';
-import { BsPencilFill, BsFillTrashFill } from 'react-icons/bs';
-import { Button } from 'react-bootstrap';
+import {
+  Fab,
+  Tooltip,
+ 
+  Button as MuiButton,
+} from '@mui/material';
 import { FaPlus } from 'react-icons/fa';
 
 const TablaClienteMinimo = ({ headers, data, eliminar, editar,agregar }) => {
@@ -46,27 +50,11 @@ const TablaClienteMinimo = ({ headers, data, eliminar, editar,agregar }) => {
   
   return (
 
-    <div style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column' }}>
+    <>
     
-    <TableContainer component={Paper} style={{ flex: 1, overflow: 'auto' }}>
-      <div className="d-flex justify-content-end mb-3" >
-      <Button
-        onClick={agregar}
-        variant="success"
-        style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            borderRadius: '30px',
-            padding: '10px 20px',
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-            fontWeight: 'bold',
-        }}
-        >
-          <FaPlus style={{ fontSize: '16px' }} />
-        
-        Agregar Cliente
-    </Button>
+  
+        <TableContainer component={Paper} style={{ flex: 1, overflow: 'auto' }}>
+          <div className="d-flex justify-content-end mb-3" >
     </div>
 
       <Table stickyHeader>
@@ -120,7 +108,25 @@ const TablaClienteMinimo = ({ headers, data, eliminar, editar,agregar }) => {
         rowsPerPageOptions={[5, 10, 15, 20, 50, 100]}
         style={{ position: 'sticky', bottom: 0, backgroundColor: '#fff', zIndex: 1 }}
       />
-    </div>
+
+<Tooltip title="Agregar Cliente" placement="left">
+        <Fab
+          color="success"
+          onClick={agregar}
+          style={{
+            position: 'fixed',
+            bottom: 24,
+            right: 24,
+            zIndex: 1500,
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+          }}
+        >
+          <FaPlus />
+        </Fab>
+      </Tooltip>
+
+
+    </>
   );
 };
 

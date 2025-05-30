@@ -13,7 +13,7 @@ export const axiosInstance = axios.create({
 });
 
 export const getAllClientes = async () => {
- console.log("llega a llamar")
+ 
   try {
     const response = await axiosInstance.get('/cliente/listall');
     return response.data.clientes;  // Retorna solo el array de clientes
