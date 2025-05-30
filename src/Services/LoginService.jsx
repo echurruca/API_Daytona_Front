@@ -17,7 +17,7 @@ export const axiosInstance = axios.create({
 
 
 export const login = async (username, password) => {
-  
+ 
 
   try {
       
@@ -25,9 +25,9 @@ export const login = async (username, password) => {
         username,password
       })
       
-     
+      
       if (response.status === 200) {
-
+         
           return response
       }
   }

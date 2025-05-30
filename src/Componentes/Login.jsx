@@ -24,16 +24,18 @@ const Login = ({ onLogin }) => {
   };
 
   const handleSubmit = (e) => {
+   
     e.preventDefault();
     if (!formData.username || !formData.password) {
       setError("Por favor complete todos los campos.");
       return;
     }
-    setError("");
+    setError("");  
 
-    // Simular llamada al backend o ejecutar función onLogin
-    onLogin(formData); // Pasa los datos al padre o realiza una acción
+    onLogin(formData); 
   };
+
+ 
 
   return (
     <Container component="main" maxWidth="xs">

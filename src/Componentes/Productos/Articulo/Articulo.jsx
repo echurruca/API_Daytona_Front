@@ -24,6 +24,7 @@ const Articulo = () => {
         const data = await getAllArticulos();
         const dato = await data.filter((item) =>item.nombre !== null &&  item.isActive);
         setDatos(dato);
+        console.log(JSON.stringify(dato).length)
         setCargando(true);
       } catch (error) {
         console.error('Error al cargar los artículos:', error);

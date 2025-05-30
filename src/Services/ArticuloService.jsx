@@ -1,7 +1,9 @@
+import { unstable_createBreakpoints } from '@mui/material';
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
-const BEARER_TOKEN = process.env.REACT_APP_TOKEN
+const BEARER_TOKEN = localStorage.getItem('token')
+//process.env.REACT_APP_TOKEN
 
 
 export const axiosInstance = axios.create({
@@ -16,7 +18,6 @@ export const getAllArticulos = async () => {
  
   try {
     const response = await axiosInstance.get('/articulo/listall');
-
     return response.data.articulosComp;  // Retorna solo el array de artículos
   } catch (error) {
     console.error('Error al obtener los artículos:', error);
@@ -31,6 +32,19 @@ export const getArticulo = async (id) => {
     return response.data;  // Devuelve el artículo completo
   } catch (error) {
     console.error('Error al obtener el artículo:', error);
+    throw error;
+  }
+};
+
+export const obtenerArticulosPorFiltro = async (desde, hasta, marca) => {
+  console.log("antes")
+  
+  try {
+    const response = await axiosInstance.get(`/articulo/listbyprovymarca ${desde,hasta,marca}`);
+    console.log("respuesta")
+    return response.data.articulos; // ajustá según lo que devuelva tu backend
+  } catch (error) {
+    console.error('Error al obtener artículos filtrados:', error);
     throw error;
   }
 };
@@ -91,3 +105,4 @@ export const updateArticulo = async (id, descripcion,marca,linea,prove,sublinea,
       alert(e.response.data.title)
   }
 }
+
